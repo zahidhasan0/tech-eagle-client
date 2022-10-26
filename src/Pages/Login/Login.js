@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
 
@@ -140,7 +140,7 @@ const Login = () => {
         {" "}
         <span className="text-white me-3">
           {" "}
-          <FaGithub />
+          <FaFacebook />
         </span>{" "}
         Facebook Sign In
       </button>

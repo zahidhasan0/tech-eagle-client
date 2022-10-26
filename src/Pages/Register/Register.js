@@ -4,12 +4,12 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
 
 const Register = () => {
-  const { auth, signUP, error, setError, googleSignIn, GithubSignIn } =
+  const { auth, signUP, error, setError, googleSignIn, GithubSignIn,facebookSignIn } =
     useContext(AuthProvider);
 
   const handleSubmit = (event) => {
@@ -72,6 +72,15 @@ const Register = () => {
     })
     .catch(error=>console.error(error))
   }
+
+  const handleFacebookSignIn = () => {
+    facebookSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user)
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
     <div
@@ -179,6 +188,19 @@ const Register = () => {
         </span>{" "}
         Github Sign In
       </button>
+      <h6 className="text-center">or</h6>
+      <button
+        onClick={handleFacebookSignIn}
+        className="text-white rounded-2 w-100 fw-semibold none border border-0 py-1 bg-primary"
+      >
+        {" "}
+        <span className="text-white me-3">
+          {" "}
+          <FaFacebook />
+        </span>{" "}
+        Facebook Sign In
+      </button>
+    
     </div>
   );
 };

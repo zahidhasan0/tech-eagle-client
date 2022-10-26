@@ -18,7 +18,7 @@ const Header = () => {
         <Navbar key={expand} bg="light" expand={expand} className="mb-3">
           <Container fluid>
           <img style={{height: '50px'}} src='https://www.logologo.com/logos/eagle-logo-design-free-logo.jpg' alt=''></img>
-            <Navbar.Brand  className='fw-bold text-primary' > <Link  to='/' className='text-decoration-none ms-2 fs-3'>TechEaggle</Link> </Navbar.Brand>
+            <Navbar.Brand  className='fw-bold text-primary' > <Link  to='/' className='text-decoration-none ms-2 fs-3'>TechEagle</Link> </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
