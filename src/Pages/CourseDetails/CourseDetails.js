@@ -1,14 +1,14 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { FaDownload } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const CourseDetails = () => {
   const course = useLoaderData();
   const {
     name,
     title,
-    id,
+    
     instructor,
     image_url,
     price,
@@ -29,7 +29,7 @@ const CourseDetails = () => {
         
         <div className="d-flex  align-items-center my-3  ">
           <span>instructor:</span>-
-            <h5 className="ms-3">{instructor.name} </h5>
+            <h6 className="ms-3">{instructor.name} </h6>
         </div>
         <p>Total students: {total_student} </p>
         <p>Class time :- {class_time} </p>
@@ -38,6 +38,8 @@ const CourseDetails = () => {
         <Card.Text><span className="fw-semibold"> About {name} :-</span> {details}</Card.Text>
 
       </Card.Body>
+
+      <button className="text-decoration-none border-0 bg-primary"> <Link className="text-decoration-none text-white" to='/checkout'>Get premium access</Link></button>
     </Card>
   );
 };

@@ -8,6 +8,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
@@ -53,7 +54,12 @@ const facebookSignIn=()=>{
     }
   },[])
 
-  const authInfo = { auth, user, signUP, signIn, error, setError,googleSignIn , GithubSignIn, facebookSignIn };
+  const logOut=()=>{
+return signOut(auth)
+
+  }
+
+  const authInfo = { auth, user, signUP, signIn, error, setError,googleSignIn , GithubSignIn, facebookSignIn, logOut };
 
   return (
     <div>

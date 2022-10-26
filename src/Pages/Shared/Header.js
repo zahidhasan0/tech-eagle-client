@@ -10,7 +10,13 @@ import { AuthProvider } from '../../Context/AuthContext';
 
 const Header = () => {
   //useContext from the AuthContext
-  const {user}=useContext(AuthProvider)
+  const {user,logOut}=useContext(AuthProvider)
+
+  const handleSignOut=()=>{
+    logOut()
+    .then(()=>{})
+    .catch(error=>console.error(error))
+  }
 
     return (
         <>
@@ -43,6 +49,7 @@ const Header = () => {
                   <NavLink className='text-decoration-none me-4' to="#action2">Dark Mode</NavLink>
 
                   <NavLink className='text-decoration-none me-4' to="/login">Login</NavLink>
+                  <button onClick={handleSignOut}> Sign Out </button>
 
                   {user && user.uid ?   <img className='rounded-circle' style={{height: '40px'}} src={user.photoURL} alt=''></img> : <NavLink className='text-decoration-none me-4' to="/login">Login</NavLink> }
                  
