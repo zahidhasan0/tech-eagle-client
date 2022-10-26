@@ -8,7 +8,7 @@ const CourseDetails = () => {
   const {
     name,
     title,
-    
+    id,
     instructor,
     image_url,
     price,
@@ -17,7 +17,7 @@ const CourseDetails = () => {
     class_time,
     total_student,
   } = course;
-  console.log(course);
+  
   return (
     <Card className="w-50 mx-auto mt-5 shadow p-4">
         <div className=" border-bottom mb-5 d-flex justify-content-between p-2">
@@ -29,17 +29,17 @@ const CourseDetails = () => {
         
         <div className="d-flex  align-items-center my-3  ">
           <span>instructor:</span>-
-            <h6 className="ms-3">{instructor.name} </h6>
+            <h6 className="ms-3">{instructor?.name} </h6>
         </div>
-        <p>Total students: {total_student} </p>
+        <p>Total students:- {total_student} </p>
         <p>Class time :- {class_time} </p>
         <p>Price:- {price} </p>
-        <p>Ratings: {rating.number}</p>
+        <p>Ratings:- {rating?.number}</p>
         <Card.Text><span className="fw-semibold"> About {name} :-</span> {details}</Card.Text>
 
       </Card.Body>
 
-      <button className="text-decoration-none border-0 bg-primary"> <Link className="text-decoration-none text-white" to='/checkout'>Get premium access</Link></button>
+      <button className="text-decoration-none border-0 bg-primary"> <Link className="text-decoration-none text-white" to={`/checkout/${id}`}>Get premium access</Link></button>
     </Card>
   );
 };

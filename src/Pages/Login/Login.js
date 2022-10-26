@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
 
 const Login = () => {
@@ -17,6 +17,10 @@ const Login = () => {
     facebookSignIn,
   } = useContext(AuthProvider);
 
+  const navigate = useNavigate();
+  const location =useLocation()
+  const from = location.state?.from?.pathname || "/";
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -27,6 +31,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error);
@@ -39,6 +44,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
+
       })
       .catch((error) => console.error(error));
   };
@@ -48,6 +55,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
   };
@@ -57,6 +65,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user)
+        navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
   };

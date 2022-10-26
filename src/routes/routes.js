@@ -10,11 +10,14 @@ import Faq from "../Pages/Faq/Faq";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: "/",
@@ -48,8 +51,11 @@ export const router = createBrowserRouter([
         element: <Faq />,
       },
       {
-        path: 'checkout',
-        element: <CheckOut/>
+        path: '/checkout/:id',
+        element: <PrivateRoute> <CheckOut/></PrivateRoute>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/course/${params.id}`),
+
       }
     ],
   },

@@ -17,8 +17,8 @@ const Course = ({ course }) => {
       <div>
         <span>with</span>
         <div className="d-flex  align-items-center  ">
-          <img className="rounded-circle me-2" style={{ height: "40px" }} src={instructor.img} alt=""></img>
-          <h6>{instructor.name} </h6>
+          <img className="rounded-circle me-2" style={{ height: "40px" }} src={instructor?.img} alt=""></img>
+          <h6>{instructor?.name} </h6>
         </div>
       </div>
       <div></div>
