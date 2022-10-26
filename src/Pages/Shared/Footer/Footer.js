@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div>
-            <CDBFooter className="shadow text-primary" >
+            <CDBFooter className="shadow text-primary bg-dark" >
       <CDBBox
         display="flex"
         justifyContent="between"
@@ -18,7 +18,7 @@ const Footer = () => {
           <Link href="/" className="d-flex align-items-center p-0 text-dark">
             <img
               alt="logo"
-              src="https://www.logologo.com/logos/eagle-logo-design-free-logo.jpg"
+              src="https://media.istockphoto.com/photos/graphic-digital-eagle-flying-connection-technology-concept-picture-id1155816684?b=1&k=20&m=1155816684&s=170667a&w=0&h=3Rn1G5A052tsGaffVHwLw9ta3S8VB1c73DU0LDICVSI="
               width="40px"
             />
             <span className="ml-4 h5 mb-0 font-weight-bold">TechEagle</span>
