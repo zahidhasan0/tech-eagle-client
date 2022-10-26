@@ -1,17 +1,64 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthProvider } from "../../Context/AuthContext";
 
 const Login = () => {
+  const {
+    signIn,
+    error,
+    setError,
+    googleSignIn,
+    GithubSignIn,
+    facebookSignIn,
+  } = useContext(AuthProvider);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-   
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+      })
+      .catch((error) => {
+        setError(error);
+        console.error(error);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const handleGithubSignIn = () => {
+    GithubSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const handleFacebookSignIn = () => {
+    facebookSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user)
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -47,7 +94,7 @@ const Login = () => {
             />
           </Col>
         </Form.Group>
-
+        <p className="text-danger">{error?.message}</p>
         <Form.Group as={Row} className="mb-3">
           <Col sm={{}} className="text-center mt-3">
             <Button className="text-center  " type="submit">
@@ -55,8 +102,48 @@ const Login = () => {
             </Button>
           </Col>
         </Form.Group>
-        <p>Don't have any account? <Link to='/register'> Register</Link> </p>
+        <p>
+          Don't have any account? <Link to="/register"> Register</Link>{" "}
+        </p>
       </Form>
+      <h6 className="text-center">or</h6>
+      <button
+        onClick={handleGoogleSignIn}
+        className="text-white rounded-2 w-100 fw-semibold none border border-0 py-1 bg-primary"
+      >
+        {" "}
+        <span className="text-white me-3">
+          {" "}
+          <FaGoogle />
+        </span>{" "}
+        Google Sign In
+      </button>
+
+      <h6 className="text-center">or</h6>
+      <button
+        onClick={handleGithubSignIn}
+        className="text-white rounded-2 w-100 fw-semibold none border border-0 py-1 bg-primary"
+      >
+        {" "}
+        <span className="text-white me-3">
+          {" "}
+          <FaGithub />
+        </span>{" "}
+        Github Sign In
+      </button>
+
+      <h6 className="text-center">or</h6>
+      <button
+        onClick={handleFacebookSignIn}
+        className="text-white rounded-2 w-100 fw-semibold none border border-0 py-1 bg-primary"
+      >
+        {" "}
+        <span className="text-white me-3">
+          {" "}
+          <FaGithub />
+        </span>{" "}
+        Facebook Sign In
+      </button>
     </div>
   );
 };
