@@ -32,7 +32,7 @@ const Header = () => {
           key={expand}
           bg="light"
           expand={expand}
-          className={isToggle ? "mb-3 text-white align-items-center" : "bg-dark mb-3 text-white align-items-center"}
+          className={isToggle ? "text-white align-items-center" : "bg-dark mb-3 text-white align-items-center"}
 
           // className={({ isToggle }) => (isToggle ? "mb-3 text-white align-items-center" : "bg-dark mb-3 text-white align-items-center")}
           

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthProvider } from "../../Context/AuthContext";
 
 const Course = ({ course }) => {
+  const {isToggle, setIsToggle}=useContext(AuthProvider);
+
   const { name, title, id, instructor, image_url, price, rating } = course;
   console.log(course);
   return (
-    <div className=" p-3 shadow mt-4 text-decoration-none text-black" style={{ height: "350px" }}>
+    <div className= {isToggle ? "rounded p-3 shadow mt-4 text-decoration-none text-dark bg-light" : "rounded p-3 shadow mt-4 text-decoration-none text-dark bg-light" }  style={{ height: "350px" }}>
       <div>
         <img
           className="w-100 mb-2"
