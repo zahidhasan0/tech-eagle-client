@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div>
-            <CDBFooter className="shadow text-primary bg-dark" >
+            <CDBFooter className="shadow text-primary bg-light" >
       <CDBBox
         display="flex"
         justifyContent="between"

@@ -21,7 +21,7 @@ const Header = () => {
     return (
         <>
       {[ 'sm'].map((expand) => (
-        <Navbar key={expand} bg="l" style={{background:'green'}} expand={expand} className="mb-3 text-white">
+        <Navbar key={expand} bg="light"  expand={expand} className="mb-3 text-white">
           <Container fluid>
           <img style={{height: '50px'}} src='https://media.istockphoto.com/photos/graphic-digital-eagle-flying-connection-technology-concept-picture-id1155816684?b=1&k=20&m=1155816684&s=170667a&w=0&h=3Rn1G5A052tsGaffVHwLw9ta3S8VB1c73DU0LDICVSI=' alt=''></img>
             <Navbar.Brand  className='fw-bold ' > <Link  to='/' className='text-decoration-none ms-2 fs-3'>TechEagle</Link> </Navbar.Brand>
