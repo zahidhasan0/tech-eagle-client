@@ -17,56 +17,68 @@ const auth = getAuth(app);
 
 const AuthContext = ({ children }) => {
   const [error, setError] = useState(null);
-  const [user,setUser]=useState(null)
-  const [loading,setLoading]=useState(true)
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [isToggle, setIsToggle] = useState(true);
 
-  const googleProvider = new GoogleAuthProvider()
-  const githubProvider= new GithubAuthProvider()
-  const facebookProvider= new FacebookAuthProvider()
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
 
   const signUP = (email, password) => {
-    setLoading(true)
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signIn = (email, password) => {
-    setLoading(true)
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const googleSignIn=()=>{
-    setLoading(true)
-    return signInWithPopup(auth,googleProvider)
-  }
+  const googleSignIn = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
 
-const GithubSignIn=()=>{
-    setLoading(true)
-    return signInWithPopup(auth, githubProvider)
-}
+  const GithubSignIn = () => {
+    setLoading(true);
+    return signInWithPopup(auth, githubProvider);
+  };
 
-const facebookSignIn=()=>{
-    setLoading(true)
-    return signInWithPopup(auth,facebookProvider)
-}
-  useEffect(()=>{
-  const unsubscribe=  onAuthStateChanged(auth, currentUser=>{
-        setUser(currentUser)
-        setLoading(false)
-    })
+  const facebookSignIn = () => {
+    setLoading(true);
+    return signInWithPopup(auth, facebookProvider);
+  };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
 
-    
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
-    return ()=>{
-        unsubscribe()
-    }
-  },[])
+  const logOut = () => {
+    return signOut(auth);
+  };
 
-  const logOut=()=>{
-return signOut(auth)
-
-  }
-
-  const authInfo = { auth, user, signUP, signIn, error, setError,googleSignIn , GithubSignIn, facebookSignIn, logOut, loading };
+  const authInfo = {
+    auth,
+    user,
+    signUP,
+    signIn,
+    error,
+    setError,
+    googleSignIn,
+    GithubSignIn,
+    facebookSignIn,
+    logOut,
+    loading,
+    isToggle,
+    setIsToggle,
+  };
 
   return (
     <div>
