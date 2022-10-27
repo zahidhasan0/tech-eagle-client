@@ -11,6 +11,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage";
+import UserDetails from "../Pages/UserDetails/UserDetails";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://server-ass10.vercel.app/course/${params.id}`),
 
+      },
+      {
+        path: '/userdetails',
+        element: <UserDetails/>
       }
     ],
   },

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 
 import { Card, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { AuthProvider } from '../../Context/AuthContext';
 
 
@@ -21,7 +22,7 @@ const Home = () => {
             “when you don't create things, you become defined by your tastes rather than ability. your tastes only narrow & exclude people. so create.”
             </p>
             <h6 className='ms-5'> - Why The Lucky Stiff</h6>
-            <button className='border-0 py-2 px-4 mt-3 bg-dark text-light rounded '>Get Strated</button>
+            <button className='border-0 py-2 px-4 mt-3 bg-dark text-light rounded '><Link to='/courses' className='text-decoration-none text-white'>Get Strated</Link> </button>
         </div>
        </div>
        </div>

@@ -17,7 +17,7 @@ const Courses = () => {
   }, []);
 
   return (
-    <div className={isToggle ? 'true' : 'false'}>
+    <div className={isToggle ? 'true mb-5' : 'false'}>
       <Container >
       <Row>
         <Col lg="3" className=" mt-4">

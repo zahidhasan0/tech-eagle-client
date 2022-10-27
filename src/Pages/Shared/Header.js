@@ -105,7 +105,7 @@ const Header = () => {
                       >
                         <FaSignOutAlt></FaSignOutAlt>
                       </button>
-                      <Link>
+                      <Link to='/userdetails'>
                         <img title={user.displayName}
                           className="rounded-circle"
                           style={{ height: "40px" }}
