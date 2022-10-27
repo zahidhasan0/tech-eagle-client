@@ -19,7 +19,8 @@ const CourseDetails = () => {
   } = course;
   
   return (
-    <Card className="w-50 mx-auto mt-5 shadow p-4">
+    <div className="bg-image hover-zoom">
+      <Card className="w-50 mx-auto mt-5 shadow p-4">
         <div className=" border-bottom mb-5 d-flex justify-content-between p-2">
         <h4> {title} </h4>
         <button className="border-0"> <FaDownload></FaDownload> </button>
@@ -41,6 +42,7 @@ const CourseDetails = () => {
 
       <button className="text-decoration-none border-0 bg-primary"> <Link className="text-decoration-none text-white" to={`/checkout/${id}`}>Get premium access</Link></button>
     </Card>
+    </div>
   );
 };
 
