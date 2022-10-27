@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthProvider } from "../../Context/AuthContext";
+import './Course.css'
 
 const Course = ({ course }) => {
   const {isToggle, setIsToggle}=useContext(AuthProvider);
@@ -7,7 +8,7 @@ const Course = ({ course }) => {
   const { name, title, id, instructor, image_url, price, rating } = course;
   console.log(course);
   return (
-    <div className= {isToggle ? "rounded p-3 shadow mt-4 text-decoration-none text-dark bg-light" : "rounded p-3 shadow mt-4 text-decoration-none text-dark bg-light" }  style={{ height: "350px" }}>
+    <div className= {isToggle ? "rounded p-3 shadow mt-4 text-decoration-none text-dark bg-light hvr-grow" : "rounded p-3 shadow mt-4 text-decoration-none text-dark bg-light hvr-grow" }  style={{ height: "350px" }}>
       <div>
         <img
           className="w-100 mb-2"

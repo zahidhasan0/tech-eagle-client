@@ -6,6 +6,7 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -65,6 +66,10 @@ const AuthContext = ({ children }) => {
     return signOut(auth);
   };
 
+  const forgottenPassword=(email)=>{
+   return sendPasswordResetEmail(auth, email)
+  }
+
   const authInfo = {
     auth,
     user,
@@ -80,7 +85,8 @@ const AuthContext = ({ children }) => {
     isToggle,
     setIsToggle,
     darkmode,
-    setDarkMode
+    setDarkMode,
+    forgottenPassword
   };
 
   return (

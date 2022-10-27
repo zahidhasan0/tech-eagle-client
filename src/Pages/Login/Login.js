@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -6,8 +7,11 @@ import Row from "react-bootstrap/Row";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
+  const [userEmail, setUserEmail] = useState(null);
   const {
     signIn,
     error,
@@ -15,29 +19,43 @@ const Login = () => {
     googleSignIn,
     GithubSignIn,
     facebookSignIn,
+    forgottenPassword,
   } = useContext(AuthProvider);
 
   const navigate = useNavigate();
-  const location =useLocation()
+  const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
+    setUserEmail(email);
     const password = form.password.value;
     signIn(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
         navigate(from, { replace: true });
-        console.log(form)
+        console.log(form);
         form.reset();
-        setError('')
+        setError("");
       })
       .catch((error) => {
         setError(error);
         console.error(error);
+        return;
+      });
+  };
+
+  const handleResetPassword = () => {
+    forgottenPassword(userEmail)
+      .then((result) => {
+        toast.success("check your email for password reset.");
+      })
+      .catch((error) => {
+        setError(error);
+        console.log(error)
         return;
       });
   };
@@ -48,7 +66,6 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         navigate(from, { replace: true });
-
       })
       .catch((error) => console.error(error));
   };
@@ -67,7 +84,7 @@ const Login = () => {
     facebookSignIn()
       .then((result) => {
         const user = result.user;
-        console.log(user)
+        console.log(user);
         navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
@@ -115,6 +132,16 @@ const Login = () => {
           </Col>
         </Form.Group>
         <p>
+          Forgot password?{" "}
+          <button
+            onClick={handleResetPassword}
+            className="border-0 text-secondary "
+          >
+            {" "}
+            reset password
+          </button>{" "}
+        </p>
+        <p>
           Don't have any account? <Link to="/register"> Register</Link>{" "}
         </p>
       </Form>
@@ -156,6 +183,7 @@ const Login = () => {
         </span>{" "}
         Facebook Sign In
       </button>
+      <ToastContainer />
     </div>
   );
 };

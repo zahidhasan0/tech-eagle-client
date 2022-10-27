@@ -5,12 +5,23 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
 
 const Register = () => {
-  const { auth, signUP, error, setError, googleSignIn, GithubSignIn,facebookSignIn } =
-    useContext(AuthProvider);
+  const {
+    auth,
+    signUP,
+    error,
+    setError,
+    googleSignIn,
+    GithubSignIn,
+    facebookSignIn,
+  } = useContext(AuthProvider);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,6 +48,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
         setError(" ");
         updateUserProfile(name, photourl);
         form.reset();
@@ -64,20 +76,20 @@ const Register = () => {
       .catch((error) => console.error(error));
   };
 
-  const handleGithubSignIn =()=>{
+  const handleGithubSignIn = () => {
     GithubSignIn()
-    .then(result=>{
-        const user=result.user;
-        console.log(user)
-    })
-    .catch(error=>console.error(error))
-  }
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
 
   const handleFacebookSignIn = () => {
     facebookSignIn()
       .then((result) => {
         const user = result.user;
-        console.log(user)
+        console.log(user);
       })
       .catch((error) => console.error(error));
   };
@@ -200,7 +212,6 @@ const Register = () => {
         </span>{" "}
         Facebook Sign In
       </button>
-    
     </div>
   );
 };
