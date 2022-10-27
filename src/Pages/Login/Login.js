@@ -30,12 +30,15 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        form.reset();
         navigate(from, { replace: true });
+        console.log(form)
+        form.reset();
+        setError('')
       })
       .catch((error) => {
         setError(error);
         console.error(error);
+        return;
       });
   };
 

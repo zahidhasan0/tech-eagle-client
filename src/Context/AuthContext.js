@@ -20,6 +20,7 @@ const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isToggle, setIsToggle] = useState(true);
+  const[darkmode,setDarkMode]=useState(false)
 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
@@ -78,6 +79,8 @@ const AuthContext = ({ children }) => {
     loading,
     isToggle,
     setIsToggle,
+    darkmode,
+    setDarkMode
   };
 
   return (

@@ -3,11 +3,13 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { FaDAndD, FaUser, MdDarkMode } from "react-icons/fa";
+import {  FaMoon, FaSignOutAlt, FaSun,  } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
 
 const Header = () => {
+
+  
   //useContext from the AuthContext
   const { user, logOut, isToggle, setIsToggle } = useContext(AuthProvider);
 
@@ -16,6 +18,8 @@ const Header = () => {
       .then(() => {})
       .catch((error) => console.error(error));
   };
+
+  
 
   const handleToggleMood = () => {
    setIsToggle(!isToggle)
@@ -28,7 +32,10 @@ const Header = () => {
           key={expand}
           bg="light"
           expand={expand}
-          className="mb-3 text-white"
+          className={isToggle ? "mb-3 text-white align-items-center" : "bg-dark mb-3 text-white align-items-center"}
+
+          // className={({ isToggle }) => (isToggle ? "mb-3 text-white align-items-center" : "bg-dark mb-3 text-white align-items-center")}
+          
         >
           <Container fluid>
             <img
@@ -58,47 +65,48 @@ const Header = () => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3 fw-semibold  ">
-                  <NavLink className="text-decoration-none me-4" to="/courses">
+                  <NavLink className={({ isActive }) => (isActive ? 'text-decoration-none me-4 border-3 border-bottom border-primary' : 'text-decoration-none me-4')}  to="/courses">
                     Courses
                   </NavLink>
 
-                  <NavLink className="text-decoration-none me-4" to="/faq">
+                  <NavLink className={({ isActive }) => (isActive ? 'text-decoration-none me-4 border-3 border-bottom border-primary' : 'text-decoration-none me-4')} to="/faq">
                     FAQ
                   </NavLink>
 
-                  <NavLink className="text-decoration-none me-4" to="/blog">
+                  <NavLink className={({ isActive }) => (isActive ? 'text-decoration-none me-4 border-3 border-bottom border-primary' : 'text-decoration-none me-4')} to="/blog">
                     Blog
                   </NavLink>
 
                   {isToggle ? (
                     <NavLink
                       onClick={handleToggleMood}
-                      className="text-decoration-none me-4"
+                      className="text-decoration-none me-4 text-dark"
                       to="#action2"
-                    >
-                      Dark Mode
+                      title="dark mode"
+                    > <FaMoon/>
+                      
                     </NavLink>
                   ) : (
                     <NavLink
                       onClick={handleToggleMood}
-                      className="text-decoration-none me-4"
+                      className="text-decoration-none me-4 text-warning"
                       to="#action2"
+                      title="light mode"
                     >
-                      Light Mode
+                      <FaSun/>
                     </NavLink>
                   )}
 
                   {user && user.uid ? (
                     <>
                       <button
-                        className="border-0 fw-semibold text-primary mt-0 me-2 p-0"
-                        onClick={handleSignOut}
+                        className="border-0 fw-semibold text-primary mt-0 me-4 px-3 p-0"
+                        onClick={handleSignOut} title='sign out'
                       >
-                        {" "}
-                        Sign Out{" "}
+                        <FaSignOutAlt></FaSignOutAlt>
                       </button>
                       <Link>
-                        <img
+                        <img title={user.displayName}
                           className="rounded-circle"
                           style={{ height: "40px" }}
                           src={user.photoURL}
