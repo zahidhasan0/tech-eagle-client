@@ -10,7 +10,7 @@ const CheckOut = () => {
     const {title,price,total_student, class_time,image_url}=course;
     return (
         
-           <Card className='w-25 mx-auto'>
+           <Card className='register-form mx-auto'>
       <Card.Img variant="top" src={image_url} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>

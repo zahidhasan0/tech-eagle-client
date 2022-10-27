@@ -1,10 +1,11 @@
 import React from "react";
-import { useRef } from "react";
+
 import { Card } from "react-bootstrap";
 import { FaDownload } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 // import {ReactToPdf } from "react-to-pdf"
 import Pdf from "react-to-pdf";
+import './CourseDetails.css'
 
 
 const ref = React.createRef();
@@ -28,8 +29,8 @@ const CourseDetails = () => {
   
   
   return (
-    <div ref={ref} className="bg-image hover-zoom">
-      <Card className="w-50 mx-auto mt-5 shadow p-4">
+    <div ref={ref} className="coursedetails mx-auto bg-image hover-zoom">
+      <Card className="  mt-5 shadow p-4">
         <div className=" border-bottom mb-5 d-flex justify-content-between p-2">
         <h4> {title} </h4>
 

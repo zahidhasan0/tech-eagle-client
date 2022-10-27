@@ -92,9 +92,9 @@ const Login = () => {
 
   return (
     <div
-      className=" mx-auto border p-4 m-3
+      className="register-form mx-auto border p-4 m-3
      text-primary shadow-lg "
-      style={{ width: "40%" }}
+      
     >
       <h3 className="mb-5 w-75 mx-auto text-center border-4 pb-3 border-bottom border-primary">
         Please login
